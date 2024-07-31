@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('Position_Salaries.csv')
-X = dataset.iloc[:, 1:2].values
-y = dataset.iloc[:, 2].values
+# dataset = pd.read_csv('Position_Salaries.csv')
+dataset = pd.read_csv('em_stock_data.csv')
+X = dataset.loc[:, ['Close', 'Volume']].values
+y = dataset.loc[:, ['Close']].values
 
 # Splitting the dataset into the Training set and Test set
 """from sklearn.cross_validation import train_test_split
@@ -28,7 +29,8 @@ regressor = RandomForestRegressor(n_estimators = 100)
 regressor.fit(X, y)
 
 # Predicting a new result
-y_pred = regressor.predict(6.5)
+y_pred = regressor.predict([[200, 86709100]])
+print("predict value: ", y_pred)
 
 # Visualising the Random Forest Regression results (higher resolution)
 X_grid = np.arange(min(X), max(X), 0.01)
