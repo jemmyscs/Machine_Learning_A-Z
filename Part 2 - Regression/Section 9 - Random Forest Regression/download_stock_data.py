@@ -11,7 +11,8 @@ import yfinance as yf
 # Get the stock data from tushare
 def get_stock_data(code,pred_days):
     # df_raw = ts.get_k_data(code)
-    df_raw = yf.download(code, start='2022-01-01', end='2024-07-26')
+    # df_raw = yf.download(code, start='2022-01-01', end='2024-07-26')
+    df_raw = yf.download(code, start=None, end='2024-07-26')
     # Classification
     label = ['']*len(df_raw['Close'])
     for i in range(len(df_raw['Close'])-pred_days):
